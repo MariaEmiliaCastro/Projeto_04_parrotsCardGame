@@ -45,30 +45,36 @@ function distribuirCartas(quantidade) {
     }
 }
 
+function desvirarCarta(cartaAnterior, cartaAtual){
+    cartaAnterior.children[1].classList.remove("virada");
+    cartaAnterior.children[1].classList.add("hidden");
+
+    cartaAnterior.children[0].classList.remove("clicked");
+    cartaAnterior.children[1].classList.remove("clicked");
+
+    cartaAtual.children[1].classList.add("hidden");
+    cartaAtual.children[0].classList.remove("clicked");
+    cartaAtual.children[1].classList.remove("clicked");
+}
 
 function virarDesvirar(carta) {
-    const lados = carta.children;
-
-    const frenteira = lados[0];
-    const traseira = lados[1];
-
-    if (traseira.classList.contains("hidden")) {
+    if (carta.children[1].classList.contains("hidden")) {
         if (viradosFlag === 1) {
-            traseira.classList.remove("hidden");
-            traseira.classList.add("virada");
-            traseira.classList.add("clicked");
-            frenteira.classList.add("clicked");
+            carta.children[1].classList.remove("hidden");
+            carta.children[1].classList.add("virada");
+            carta.children[1].classList.add("clicked");
+            carta.children[0].classList.add("clicked");
             primeiraVirada = carta;
             viradosFlag++;
             jogadas++;
         }else if(viradosFlag === 2){
-            traseira.classList.remove("hidden");
-            traseira.classList.add("clicked");
-            frenteira.classList.add("clicked");
+            carta.children[1].classList.remove("hidden");
+            carta.children[1].classList.add("clicked");
+            carta.children[0].classList.add("clicked");
             viradosFlag++;
             jogadas++;
-            if(traseira.innerHTML === primeiraVirada.children[1].innerHTML){
-                traseira.classList.add("virada");
+            if(carta.children[1].innerHTML === primeiraVirada.children[1].innerHTML){
+                carta.children[1].classList.add("virada");
                 viradosFlag -= 2;
                 numCartas = numCartas - 2;
                 if(numCartas === 0){
@@ -82,16 +88,7 @@ function virarDesvirar(carta) {
                 }
             }else{
                 setTimeout(() => {
-                    traseira.classList.add("hidden");
-
-                    primeiraVirada.children[1].classList.remove("virada");
-                    primeiraVirada.children[1].classList.add("hidden");
-        
-                    primeiraVirada.children[0].classList.remove("clicked");
-                    primeiraVirada.children[1].classList.remove("clicked");
-
-                    frenteira.classList.remove("clicked");
-                    traseira.classList.remove("clicked");
+                    desvirarCarta(primeiraVirada, carta);                   
                     viradosFlag -= 2;
 
                 }, 2000)
