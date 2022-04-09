@@ -65,11 +65,11 @@ h1 {
     transform: rotateY(180deg);
 }
 
-.card .back-face {
+.card .back-face.clicked {
     transform: rotateY(0deg);
 }
 
-.card .front-face {
+.card .front-face.clicked {
     transform: rotateY(-180deg);
 }
 
@@ -79,5 +79,5 @@ h1 {
 }
 
 .hidden {
-    display: none;
+    
 }
