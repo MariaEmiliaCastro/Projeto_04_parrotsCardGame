@@ -45,7 +45,7 @@ function distribuirCartas(quantidade) {
     }
 }
 
-function desvirarCarta(cartaAnterior, cartaAtual){
+function desvirarCarta(cartaAnterior, cartaAtual) {
     cartaAnterior.children[1].classList.remove("virada");
     cartaAnterior.children[1].classList.add("hidden");
 
@@ -67,28 +67,31 @@ function virarDesvirar(carta) {
             primeiraVirada = carta;
             viradosFlag++;
             jogadas++;
-        }else if(viradosFlag === 2){
+        } else if (viradosFlag === 2) {
             carta.children[1].classList.remove("hidden");
             carta.children[1].classList.add("clicked");
             carta.children[0].classList.add("clicked");
             viradosFlag++;
             jogadas++;
-            if(carta.children[1].innerHTML === primeiraVirada.children[1].innerHTML){
+            if (carta.children[1].innerHTML === primeiraVirada.children[1].innerHTML) {
                 carta.children[1].classList.add("virada");
                 viradosFlag -= 2;
                 numCartas = numCartas - 2;
-                if(numCartas === 0){
-                    alert("Voce ganhou em " + jogadas + " jogadas!");
-                    const reiniciar = prompt("Gostaria de reiniciar a partida?");
-                    if(reiniciar === "sim"){
-                        location.reload();
-                    }else if (reiniciar === "não"){
-                        alert("BLZ! Flw!");
-                    }
+                if (numCartas === 0) {
+                    
+                    setTimeout(() => {
+                        alert("Voce ganhou em " + jogadas + " jogadas!");
+                        const reiniciar = prompt("Gostaria de reiniciar a partida?");
+                        if (reiniciar === "sim") {
+                            location.reload();
+                        } else if (reiniciar === "não") {
+                            alert("BLZ! Flw!");
+                        }
+                    }, 500);
                 }
-            }else{
+            } else {
                 setTimeout(() => {
-                    desvirarCarta(primeiraVirada, carta);                   
+                    desvirarCarta(primeiraVirada, carta);
                     viradosFlag -= 2;
 
                 }, 2000)
@@ -99,7 +102,7 @@ function virarDesvirar(carta) {
 
 let numCartas = prompt("Deseja jogar com quantas cartas?");
 
-while(numCartas % 2 !== 0 || numCartas < 4 || numCartas > 14){
+while (numCartas % 2 !== 0 || numCartas < 4 || numCartas > 14) {
     numCartas = prompt("Deseja jogar com quantas cartas?");
 }
 
