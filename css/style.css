@@ -25,8 +25,8 @@ h1 {
     font-weight: 700;
     font-size: 70px;
     line-height: 66px;
-    letter-spacing: -0.004em;
-
+    letter-spacing: -0.05em;
+    text-align: center;
     color: #75B79E;
     margin-top: 30px;
 }
@@ -74,10 +74,45 @@ h1 {
 }
 
 .card img {
-    width: 100px;
-    height: 100px;
+    width: 80%;
+    height: 70%;
 }
 
-.hidden {
+@media screen and (max-width: 414px) {
+    h1 {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 42px;
+        text-align: center;
+        letter-spacing: -0.004em;    
+        color: #75B79E;
+        margin: 50px 40px 20px 40px;
+    }
     
+    .topo {
+        margin-bottom: 30px;
+    }
+
+    .table {
+        margin: 0 auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        width: 117px;
+        height: 146px;
+        margin-left: 0;
+        margin-top: 34px;
+        position: relative;
+    }
+
+    .card img {
+        width: 80%;
+        height: 70%;
+    }
 }
+
