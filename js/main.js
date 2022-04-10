@@ -94,7 +94,7 @@ function virarDesvirar(carta) {
                     desvirarCarta(primeiraVirada, carta);
                     viradosFlag -= 2;
 
-                }, 2000)
+                }, 1000)
             }
         }
     }
